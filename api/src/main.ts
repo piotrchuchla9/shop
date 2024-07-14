@@ -8,12 +8,11 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 
-  // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Shop API')
     .setDescription('The Shop API documentation')
     .setVersion('1.0')
-    .addTag('users') // Ensure users tag is added here
+    .addTag('users')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
