@@ -1,6 +1,7 @@
 import { AuthController } from '@/app/auth/auth.controller';
 import { AuthService } from '@/app/auth/auth.service';
 import { JwtStrategy } from '@/app/auth/jwt.strategy';
+import { TokenStorageService } from '@/app/auth/token-storage.service';
 import { UserService } from '@/app/user/user.service';
 import { PrismaService } from '@/prisma/prisma.service';
 import { Module } from '@nestjs/common';
@@ -12,10 +13,10 @@ import { PassportModule } from '@nestjs/passport';
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'your_jwt_secret',
-      signOptions: { expiresIn: '15m' }, // This is for the access token
+      signOptions: { expiresIn: '15m' },
     }),
   ],
-  providers: [AuthService, JwtStrategy, UserService, PrismaService],
+  providers: [AuthService, JwtStrategy, UserService, PrismaService, TokenStorageService],
   controllers: [AuthController],
   exports: [AuthService],
 })
