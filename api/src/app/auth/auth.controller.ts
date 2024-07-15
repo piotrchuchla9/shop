@@ -10,7 +10,7 @@ export class AuthController {
 
   @Post('login')
   @ApiOperation({ summary: 'User login' })
-  @ApiResponse({ status: 200, description: 'Return JWT token.' })
+  @ApiResponse({ status: 200, description: 'Return JWT access and refresh tokens.' })
   async login(@Body() loginDto: LoginDto) {
     const user = await this.authService.validateUser(loginDto.email, loginDto.password);
     if (!user) {

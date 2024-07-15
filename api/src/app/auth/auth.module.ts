@@ -8,15 +8,15 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-    imports: [
-      PassportModule,
-      JwtModule.register({
-        secret: process.env.JWT_SECRET || 'your_jwt_secret',
-        signOptions: { expiresIn: '1h' },
-      }),
-    ],
-    providers: [AuthService, JwtStrategy, UserService, PrismaService],
-    controllers: [AuthController],
-    exports: [AuthService],
-  })
-  export class AuthModule {}
+  imports: [
+    PassportModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET || 'your_jwt_secret',
+      signOptions: { expiresIn: '15m' }, // This is for the access token
+    }),
+  ],
+  providers: [AuthService, JwtStrategy, UserService, PrismaService],
+  controllers: [AuthController],
+  exports: [AuthService],
+})
+export class AuthModule {}
