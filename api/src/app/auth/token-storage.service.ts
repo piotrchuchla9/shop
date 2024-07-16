@@ -1,19 +1,30 @@
 import { Injectable } from '@nestjs/common';
 
+interface Token {
+  value: string;
+  expiration: number | null;
+}
+
 @Injectable()
 export class TokenStorageService {
-  private invalidatedTokens: Set<string> = new Set();
+  private invalidatedTokens: Set<Token> = new Set();
 
-  invalidateToken(token: string): void {
-    this.invalidatedTokens.add(token);
+  invalidateToken(token: string, expiresInSeconds?: number): void {
+    const expiration = expiresInSeconds ? Date.now() + expiresInSeconds * 1000 : null;
+    this.invalidatedTokens.add({ value: token, expiration });
   }
 
   isTokenInvalidated(token: string): boolean {
-    return this.invalidatedTokens.has(token);
+    this.removeExpiredTokens();
+    return Array.from(this.invalidatedTokens).some(t => t.value === token);
   }
 
-  // Optionally, implement a method to clean up expired tokens
   removeExpiredTokens(): void {
-    // Implementation depends on how you store token expiration
+    const now = Date.now();
+    this.invalidatedTokens.forEach(token => {
+      if (token.expiration && token.expiration <= now) {
+        this.invalidatedTokens.delete(token);
+      }
+    });
   }
 }
