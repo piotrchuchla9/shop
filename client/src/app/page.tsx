@@ -1,15 +1,12 @@
-"use client";
+import Link from "next/link";
 
-import React from 'react';
-import LoginForm from './components/loginForm';
-
-const Page: React.FC = () => {
-  return (
-    <div>
-      <h1>Login</h1>
-      <LoginForm />
-    </div>
-  );
-};
-
-export default Page;
+const WelcomePage = () => {
+    return (
+      <div>
+        <h1>Welcome to My Shop!</h1>
+        <Link href="/login">login</Link>
+      </div>
+    );
+  };
+  
+  export default WelcomePage;

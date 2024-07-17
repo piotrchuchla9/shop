@@ -1,4 +1,4 @@
-"use client"; // Ensure this is at the top
+"use client";
 
 import React, { useState } from 'react';
 import { useLogin } from '@shared/api/hooks';
