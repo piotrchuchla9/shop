@@ -1,3 +1,5 @@
+"use client"; // Ensure this is at the top
+
 import React, { useState } from 'react';
 import { useLogin } from '@shared/api/hooks';
 

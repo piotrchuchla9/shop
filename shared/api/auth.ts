@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000', // Update this with your backend base URL
+export const axiosInstance = axios.create({
+  baseURL: 'http://localhost:3000/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -17,6 +17,6 @@ export interface LoginResponse {
 }
 
 export const loginUser = async (credentials: LoginCredentials): Promise<LoginResponse> => {
-  const response = await axiosInstance.post('/login', credentials);
+  const response = await axiosInstance.post('/auth/login', credentials);
   return response.data;
 };
