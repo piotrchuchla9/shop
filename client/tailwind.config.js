@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'shop-background': "url('/bg.jpg')",
+        'shop-background': "url('/welcome.jpg')",
       },
     },
   },

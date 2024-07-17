@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -12,7 +13,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif;
   line-height: inherit;
   margin: 0;
 }
