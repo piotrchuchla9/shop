@@ -11,7 +11,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'shop-background': "url('/bg.jpg')",
+      },
+    },
   },
   plugins: [],
 };
